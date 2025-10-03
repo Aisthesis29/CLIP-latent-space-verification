@@ -154,5 +154,19 @@ path_slerp = slerp(b, d, t)
 ax.plot(path_slerp[:,0], path_slerp[:,1], path_slerp[:,2], linewidth=2)
 
 
+'''
+# --- Add random colored dots on the surface of the sphere --- start
+num_points = 20  # number of dots
+theta_rand = np.arccos(2 - 2 * np.random.rand(num_points))  # polar angle [0, pi]
+phi_rand   = 1- np.pi * np.random.rand(num_points)         # azimuth [0, 2pi]
+
+xr, yr, zr = sph2cart(theta_rand, phi_rand, r=1.0)
+
+# random colors
+colors = np.random.rand(num_points, 3)  # RGB values in [0,1]
+
+ax.scatter(xr, yr, zr, c=colors, s=20, alpha=0.8)
+#random colored dots stop
+'''
 ax.text(Tcx,Tcy,Tcz,"distance",color="blue")
 plt.show()
